@@ -5,10 +5,9 @@ Provide a minimum image to run the Cloud9 IDE locally.
 Heavily influenced by [kdelfour/cloud9-docker](https://registry.hub.docker.com/u/kdelfour/cloud9-docker/)
 
 ## usage
- 1. clone or download
- 2. build the docker image
+ 1. build the docker image
 
-    ```docker build --tag="cloud9-dockerized:latest" .```
+    ```docker build -t="cloud9-dockerized:latest" github.com/maduck/cloud9-dockerized```
   
  3. run the newly created image
  
