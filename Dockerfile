@@ -4,8 +4,7 @@
 # |_.__/\__,_/__/\___|
 FROM debian:stable-slim
 RUN apt-get update
-RUN apt-get -y dist-upgrade
-RUN apt-get -y install curl build-essential apt-transport-https lsb-release supervisor git
+RUN apt-get -y install curl build-essential apt-transport-https lsb-release git zip
 #               _      _
 #  _ _  ___  __| |___ (_)___
 # | ' \/ _ \/ _` / -_)| (_-<
@@ -30,7 +29,7 @@ EXPOSE 8080
 # \__, \___/_\__,_|_||_\__, |
 # |___/                |___/
 RUN curl -sL https://storage.googleapis.com/golang/go1.10.linux-amd64.tar.gz | tar xz -C /usr/local/
-ENV GOPATH /opt/workspace
+ENV GOPATH /opt/cloud9/workspace
 ENV PATH $PATH:/usr/local/go/bin:$GOPATH/bin
 
 #     _
@@ -40,11 +39,7 @@ ENV PATH $PATH:/usr/local/go/bin:$GOPATH/bin
 #                        |_|
 RUN apt-get autoclean && apt-get clean
 RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-#                            _
-#  ____  _ _ __  ___ _ ___ _(_)___ ___ _ _
-# (_-< || | '_ \/ -_) '_\ V / (_-</ _ \ '_|
-# /__/\_,_| .__/\___|_|  \_/|_/__/\___/_|
-#         |_|
-ADD conf/cloud9.conf /etc/supervisor/conf.d/
-RUN update-rc.d supervisor defaults
-CMD ["supervisord", "-n", "-c", "/etc/supervisor/supervisord.conf"]
+
+WORKDIR /opt/cloud9
+ENV NODE_ENV production
+CMD ["node", "/opt/cloud9/server.js", "--port", "8080", "-w", "/opt/cloud9/workspace"]
