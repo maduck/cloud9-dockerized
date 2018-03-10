@@ -42,4 +42,4 @@ RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 WORKDIR /opt/cloud9
 ENV NODE_ENV production
-CMD ["node", "/opt/cloud9/server.js", "--port", "8080", "-w", "/opt/cloud9/workspace"]
+CMD ["node", "/opt/cloud9/server.js", "--collab", "--port", "8080", "-w", "/opt/cloud9/workspace"]
