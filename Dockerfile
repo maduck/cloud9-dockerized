@@ -3,15 +3,15 @@
 # | '_ \/ _` (_-</ -_)
 # |_.__/\__,_/__/\___|
 FROM debian:stable-slim
-RUN apt-get update
-RUN apt-get -y install curl build-essential apt-transport-https lsb-release git zip
+RUN apt-get update && \
+    apt-get -y install curl build-essential apt-transport-https lsb-release git zip
 #               _      _
 #  _ _  ___  __| |___ (_)___
 # | ' \/ _ \/ _` / -_)| (_-<
 # |_||_\___/\__,_\___|/ /__/
 #                   |__/
-RUN curl -sL https://deb.nodesource.com/setup_9.x | bash -
-RUN apt-get -y install nodejs
+RUN curl -sL https://deb.nodesource.com/setup_9.x | bash - && \
+    apt-get -y install nodejs
 #   ___ _             _ ___
 #  / __| |___ _  _ __| / _ \
 # | (__| / _ \ || / _` \_, /
@@ -37,8 +37,8 @@ ENV PATH $PATH:/usr/local/go/bin:$GOPATH/bin
 # / _| / -_) _` | ' \ || | '_ \
 # \__|_\___\__,_|_||_\_,_| .__/
 #                        |_|
-RUN apt-get autoclean && apt-get clean
-RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+RUN apt-get autoclean && apt-get clean && \
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 WORKDIR /opt/cloud9
 ENV NODE_ENV production
