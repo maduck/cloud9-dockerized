@@ -4,7 +4,7 @@
 # |_.__/\__,_/__/\___|
 FROM debian:stable-slim
 RUN apt-get update && \
-    apt-get -y install curl build-essential apt-transport-https lsb-release git zip
+    apt-get -y install curl build-essential apt-transport-https lsb-release git zip locales-all python2.7-minimal
 #               _      _
 #  _ _  ___  __| |___ (_)___
 # | ' \/ _ \/ _` / -_)| (_-<
