@@ -28,7 +28,7 @@ EXPOSE 8080
 # / _` / _ \ / _` | ' \/ _` |
 # \__, \___/_\__,_|_||_\__, |
 # |___/                |___/
-RUN curl -sL https://storage.googleapis.com/golang/go1.10.linux-amd64.tar.gz | tar xz -C /usr/local/
+RUN curl -sL https://storage.googleapis.com/golang/go1.11.8.linux-amd64.tar.gz | tar xz -C /usr/local/
 ENV GOPATH /opt/cloud9/workspace
 ENV PATH $PATH:/usr/local/go/bin:$GOPATH/bin
 
