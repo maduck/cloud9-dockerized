@@ -10,7 +10,7 @@ RUN apt-get update && \
 # | ' \/ _ \/ _` / -_)| (_-<
 # |_||_\___/\__,_\___|/ /__/
 #                   |__/
-RUN curl -sL https://deb.nodesource.com/setup_9.x | bash - && \
+RUN curl -sL https://deb.nodesource.com/setup_12.x | bash - && \
     apt-get -y install nodejs
 #   ___ _             _ ___
 #  / __| |___ _  _ __| / _ \
